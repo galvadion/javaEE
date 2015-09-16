@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+	<h1>Registrar</h1>
+	<h:form>
+		<h:panelGrid columns="3" styleClass="formTable">
+			Nick <h:inputText value="#{loginBean.nick}" id="nick" required="true" requiredMessage="El nick no puede ser vacio"/><h:message for="nick" styleclass="error"/>
+			Nombre Completo <h:inputText value="#{loginBean.fullName}" id="fullName" required="true" requiredMessage="El nombre no puede ser vacio"/><h:message for="fullName" styleclass="error"/>
+			E-mail <h:inputText value="#{loginBean.e_mail}" id="e_mail" required="true" requiredMessage="El correo no puede ser vacio"/><h:message for="e_mail" styleclass="error"/>
+			Contraseña <h:inputSecret value="#{loginBean.password}" id="password" required="true" requiredMessage="La contraseña no puede ser vacia"/><h:message for="password" styleclass="error"/>
+			Repita contraseña <h:inputSecret value="#{loginBean.passwordrpt}" /><p:messages id="messages"></p:messages>
+			<p:commandButton value="Register" action="#{loginBean.registrarUsuario}" process="@form" update="messages"/>
+		</h:panelGrid>
+	</h:form>
+</body> 
+</html>
