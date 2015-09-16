@@ -7,6 +7,5 @@
 		<property name="javax.persistence.schema-generation-target" value="database"/>
 		<property name="javax.persistence.schema-generation-action" value="create"/>
 	</properties>
-	
 	</persistence-unit>
 </persistence>

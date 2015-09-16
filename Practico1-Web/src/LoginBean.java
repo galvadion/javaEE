@@ -1,3 +1,5 @@
+import java.io.Serializable;
+
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -19,7 +21,11 @@ import entidades.Usuario;
  */
 @ManagedBean
 @SessionScoped
-public class LoginBean {
+public class LoginBean implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nick;
 	private String fullName;
 	private String e_mail;
@@ -90,12 +96,17 @@ public class LoginBean {
 		this.password = password;
 	}
 
+	/*
+	 * Al devolver un String, el return lleva a la url con el string detallado
+	 * No requiere cambios en faces-config.xml
+	 */
 	public String log_in(){
 		try{	
 			user=UserEJB.loginUser(nick, password);
-			return ("success");
+			//Agregar "?faces-redirect=true" permite mostrar la nueva url en el navegador
+			return ("success?faces-redirect=true");
 		}catch(Exception e){
-			return("failed");
+			return("failed?faces-redirect=true");
 		}
 		
 	}
